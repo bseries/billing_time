@@ -12,14 +12,14 @@
 
 namespace billing_recur\models;
 
-class Plans extends \cms_core\models\Base {
+class Plans extends \base_core\models\Base {
 
 	protected $_meta = [
 		'source' => 'billing_plans'
 	];
 
 	protected static $_actsAs = [
-		'cms_core\extensions\data\behavior\Localizable' => [
+		'base_core\extensions\data\behavior\Localizable' => [
 			'fields' => [
 				'amount' => 'money',
 				'quantity' => 'decimal'

@@ -1,6 +1,6 @@
 {
     "name": "atelierdisko/billing_recur",
-    "description": "Billing Recurring functionality for Base.",
+    "description": "Recurring functionality for Billing.",
     "license": "proprietary",
     "homepage": "http://atelierdisko.de",
     "type": "lithium-library",
@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "atelierdisko/cms_core": "1.2.*",
+        "atelierdisko/base_core": "1.2.*",
         "atelierdisko/billing_core": "1.2.*",
         "uor/li3_flash_message": "dev-master",
         "unionofrad/lithium": "dev-dev",
@@ -21,7 +21,7 @@
     },
     "repositories": [
       { "type": "vcs", "url": "https://github.com/uor/li3_flash_message" },
-      { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/cms_core.git" },
+      { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/base_core.git" },
       { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/billing_core.git" }
     ],
     "require-dev": {
