@@ -25,4 +25,6 @@ CREATE TABLE `billing_scheduled_invoice_positions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='mirrors billing_invoice_posititions';
 
 ALTER TABLE `users` ADD `billing_invoice_frequency` VARCHAR(20) NOT NULL  DEFAULT 'monthly'  AFTER `shipping_address_id`;
+ALTER TABLE `users` ADD `billing_plan_id` INT(11)  UNSIGNED  NOT NULL  AFTER `billing_invoice_frequency`;
+
 
