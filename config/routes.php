@@ -12,6 +12,26 @@
 
 use lithium\net\http\Router;
 
-// $persist = ['persist' => ['admin', 'controller']];
+$persist = ['persist' => ['admin', 'controller']];
+
+Router::connect('/admin/billing/scheduled/{:id:[0-9]+}', [
+	'controller' => 'ScheduledInvoicePositions', 'library' => 'billing_recur', 'action' => 'view', 'admin' => true
+], $persist);
+Router::connect('/admin/billing/scheduled/{:action}', [
+	'controller' => 'ScheduledInvoicePositions', 'library' => 'billing_recur', 'admin' => true
+], $persist);
+Router::connect('/admin/billing/scheduled/{:action}/{:id:[0-9]+}', [
+	'controller' => 'ScheduledInvoicePositions', 'library' => 'billing_recur', 'admin' => true
+], $persist);
+
+Router::connect('/admin/billing/recurring/{:id:[0-9]+}', [
+	'controller' => 'RecurringInvoicePositions', 'library' => 'billing_recur', 'action' => 'view', 'admin' => true
+], $persist);
+Router::connect('/admin/billing/recurring/{:action}', [
+	'controller' => 'RecurringInvoicePositions', 'library' => 'billing_recur', 'admin' => true
+], $persist);
+Router::connect('/admin/billing/recurring/{:action}/{:id:[0-9]+}', [
+	'controller' => 'RecurringInvoicePositions', 'library' => 'billing_recur', 'admin' => true
+], $persist);
 
 ?>

@@ -14,13 +14,12 @@ namespace billing_recur\models;
 
 use Finance\Price;
 
-// In the moment of generating an invoice position the price is finalized.
-class ScheduledInvoicePositions extends \base_core\models\Base {
+class RecurringInvoicePositions extends \base_core\models\Base {
 
 	use \base_core\models\UserTrait;
 
 	protected $_meta = [
-		'source' => 'billing_scheduled_invoice_positions'
+		'source' => 'billing_recurring_invoice_positions'
 	];
 
 	protected static $_actsAs = [
@@ -30,6 +29,12 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 				'amount' => 'money',
 				'quantity' => 'decimal'
 			]
+		]
+	];
+
+	public static $enum = [
+		'frequency' => [
+			'monthly'
 		]
 	];
 

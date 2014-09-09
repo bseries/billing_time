@@ -15,4 +15,16 @@ use lithium\g11n\Message;
 
 extract(Message::aliases());
 
+Panes::register('billing.scheduled', [
+	'title' => $t('Scheduled'),
+	'url' => ['controller' => 'ScheduledInvoicePositions', 'action' => 'index', 'library' => 'billing_recur', 'admin' => true],
+	'weight' => 60
+]);
+
+Panes::register('billing.recurring', [
+	'title' => $t('Recurring'),
+	'url' => ['controller' => 'RecurringInvoicePositions', 'action' => 'index', 'library' => 'billing_recur', 'admin' => true],
+	'weight' => 55
+]);
+
 ?>

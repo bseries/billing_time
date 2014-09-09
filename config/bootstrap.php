@@ -12,7 +12,7 @@
 
 require 'settings.php';
 // require 'media.php';
-// require 'panes.php';
+require 'panes.php';
 // require 'widgets.php';
 
 ?>
