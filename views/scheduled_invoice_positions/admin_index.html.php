@@ -19,6 +19,7 @@ $this->set([
 			<thead>
 				<tr>
 					<td data-sort="user" class="user list-sort"><?= $t('User') ?>
+					<td data-sort="execute" class="list-sort"><?= $t('Execute (on)') ?>
 					<td data-sort="description" class="list-sort"><?= $t('Description') ?>
 					<td data-sort="quantity" class="quantity list-sort"><?= $t('Quantity') ?>
 					<td data-sort="total-net" class="total-net list-sort"><?= $t('Total (net)') ?>
@@ -44,6 +45,12 @@ $this->set([
 							]) ?>
 						<?php else: ?>
 							-
+						<?php endif ?>
+					<td class="execute">
+						<?php if ($item->execute): ?>
+							<?= $this->date->format($item->execute, 'date') ?>
+						<?php else: ?>
+							<?= $t('immediately') ?>
 						<?php endif ?>
 					<td class="description"><?= $item->description ?>
 					<td class="quantity"><?= $this->number->format($item->quantity, 'decimal') ?>

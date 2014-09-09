@@ -3,7 +3,7 @@
 $this->set([
 	'page' => [
 		'type' => 'multiple',
-		'object' => $t('scheduled invoice positions')
+		'object' => $t('recurring invoice positions')
 	]
 ]);
 
