@@ -26,18 +26,22 @@ $this->set([
 					'type' => 'text',
 					'label' => $t('Description')
 				]) ?>
+			</div>
+			<div class="grid-column-right">
 				<?= $this->form->field('frequency', [
 					'type' => 'select',
 					'list' => $frequencies,
 					'label' => $t('Frequency')
 				]) ?>
-			</div>
-			<div class="grid-column-right">
-				<?= $this->form->field('created', [
+				<?= $this->form->field('execute_start', [
 					'type' => 'date',
-					'label' => $t('Created'),
-					'value' => $item->created ?: date('Y-m-d'),
-					'disabled' => true
+					'label' => $t('Execute first'),
+					'value' => $item->execute_start ?: date('Y-m-d'),
+				]) ?>
+				<?= $this->form->field('execute_stop', [
+					'type' => 'date',
+					'label' => $t('Execute until'),
+					'value' => $item->execute_stop
 				]) ?>
 			</div>
 		</div>

@@ -10,6 +10,54 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
+namespace billing_time\extensions\command;
+
+// use lithium\g11n\Message;
+
+class BillingTime extends \lithium\console\Command {
+
+	// Checks which recurring positions would now need to generate
+	// a pending invoice position and generate it.
+	//
+	// Uses frequency on record.
+	public function positionRecurring() {
+
+	}
+
+	// Checks which scheduled positions would now need to generate
+	// a pending invoice position and generate it.
+	//
+	// Uses no delay or whatsoever?
+	public function positionScheduled() {
+
+	}
+
+	public function run() {
+		extract(Message::aliases());
+
+		$this->header('Registered Recurring Jobs');
+		$data = CmsJobs::read();
+		$names = [];
+
+		foreach ($data['recurring'] as $frequency => $jobs) {
+			foreach ($jobs as $job) {
+				$names[] = $job['name'];
+				$this->out("- {$job['name']}, frequency: {$frequency}, via: {$job['library']}");
+			}
+		}
+		$this->out();
+		$name = $this->in($t('Enter job to run:'), [
+			'choices' => $names
+		]);
+
+		$this->out($t('Running job...'), false);
+		CmsJobs::runName($name);
+		$this->out($t('done.'));
+	}
+}
+
+
+/*
 use temporary\Manager as Temporary;
 
 App::import('Core', 'Controller');
@@ -208,5 +256,5 @@ class BillingShell extends Shell {
 		return $Controller;
 	}
 }
-
+ */
 ?>

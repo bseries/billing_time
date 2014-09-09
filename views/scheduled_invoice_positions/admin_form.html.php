@@ -26,11 +26,10 @@ $this->set([
 				]) ?>
 			</div>
 			<div class="grid-column-right">
-				<?= $this->form->field('created', [
+				<?= $this->form->field('execute', [
 					'type' => 'date',
-					'label' => $t('Created'),
-					'value' => $item->created ?: date('Y-m-d'),
-					'disabled' => true
+					'label' => $t('Execute'),
+					'value' => $item->execute ?: date('Y-m-d'),
 				]) ?>
 			</div>
 		</div>

@@ -19,7 +19,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 	use \base_core\models\UserTrait;
 
 	protected $_meta = [
-		'source' => 'billing_timering_invoice_positions'
+		'source' => 'billing_recurring_invoice_positions'
 	];
 
 	protected static $_actsAs = [
