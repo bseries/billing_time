@@ -11,7 +11,7 @@ $this->set([
 <article class="view-<?= $this->_config['controller'] . '-' . $this->_config['template'] ?> use-list">
 
 	<div class="top-actions">
-		<?= $this->html->link($t('recur a new invoice position'), ['action' => 'add', 'library' => 'billing_recur'], ['class' => 'button add']) ?>
+		<?= $this->html->link($t('recur a new invoice position'), ['action' => 'add', 'library' => 'billing_time'], ['class' => 'button add']) ?>
 	</div>
 
 	<?php if ($data->count()): ?>
@@ -58,11 +58,11 @@ $this->set([
 						</time>
 					<td class="actions">
 						<?php if ($item->is_active): ?>
-							<?= $this->html->link($t('deactivate'), ['id' => $item->id, 'action' => 'deactivate', 'library' => 'billing_recur'], ['class' => 'button']) ?>
+							<?= $this->html->link($t('deactivate'), ['id' => $item->id, 'action' => 'deactivate', 'library' => 'billing_time'], ['class' => 'button']) ?>
 						<?php else: ?>
-							<?= $this->html->link($t('activate'), ['id' => $item->id, 'action' => 'activate', 'library' => 'billing_recur'], ['class' => 'button']) ?>
+							<?= $this->html->link($t('activate'), ['id' => $item->id, 'action' => 'activate', 'library' => 'billing_time'], ['class' => 'button']) ?>
 						<?php endif ?>
-						<?= $this->html->link($t('open'), ['id' => $item->id, 'action' => 'edit', 'library' => 'billing_recur'], ['class' => 'button']) ?>
+						<?= $this->html->link($t('open'), ['id' => $item->id, 'action' => 'edit', 'library' => 'billing_time'], ['class' => 'button']) ?>
 				<?php endforeach ?>
 			</tbody>
 		</table>

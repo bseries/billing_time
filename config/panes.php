@@ -1,6 +1,6 @@
 <?php
 /**
- * Billing Recur
+ * Billing Time
  *
  * Copyright (c) 2014 Atelier Disko - All rights reserved.
  *
@@ -17,13 +17,13 @@ extract(Message::aliases());
 
 Panes::register('billing.scheduled', [
 	'title' => $t('Scheduled'),
-	'url' => ['controller' => 'ScheduledInvoicePositions', 'action' => 'index', 'library' => 'billing_recur', 'admin' => true],
+	'url' => ['controller' => 'ScheduledInvoicePositions', 'action' => 'index', 'library' => 'billing_time', 'admin' => true],
 	'weight' => 60
 ]);
 
 Panes::register('billing.recurring', [
 	'title' => $t('Recurring'),
-	'url' => ['controller' => 'RecurringInvoicePositions', 'action' => 'index', 'library' => 'billing_recur', 'admin' => true],
+	'url' => ['controller' => 'RecurringInvoicePositions', 'action' => 'index', 'library' => 'billing_time', 'admin' => true],
 	'weight' => 55
 ]);
 

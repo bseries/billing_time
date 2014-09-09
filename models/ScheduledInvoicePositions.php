@@ -1,6 +1,6 @@
 <?php
 /**
- * Billing Recur
+ * Billing Time
  *
  * Copyright (c) 2014 Atelier Disko - All rights reserved.
  *
@@ -10,7 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-namespace billing_recur\models;
+namespace billing_time\models;
 
 use Finance\Price;
 

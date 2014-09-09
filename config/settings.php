@@ -1,6 +1,6 @@
 <?php
 /**
- * Billing Recur
+ * Billing Time
  *
  * Copyright (c) 2014 Atelier Disko - All rights reserved.
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Billing Recur
+ * Billing Time
  *
  * Copyright (c) 2014 Atelier Disko - All rights reserved.
  *
@@ -10,13 +10,13 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
-namespace billing_recur\controllers;
+namespace billing_time\controllers;
 
 use base_core\models\VirtualUsers;
 use base_core\models\Users;
 use lithium\g11n\Message;
 use base_core\models\Currencies;
-use billing_recur\models\RecurringInvoicePositions;
+use billing_time\models\RecurringInvoicePositions;
 
 class RecurringInvoicePositionsController extends \base_core\controllers\BaseController {
 

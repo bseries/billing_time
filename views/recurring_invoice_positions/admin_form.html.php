@@ -107,9 +107,9 @@ $this->set([
 		<div class="bottom-actions">
 			<?php if ($item->exists()): ?>
 				<?php if ($item->is_active): ?>
-					<?= $this->html->link($t('deactivate'), ['id' => $item->id, 'action' => 'deactivate', 'library' => 'billing_recur'], ['class' => 'button large']) ?>
+					<?= $this->html->link($t('deactivate'), ['id' => $item->id, 'action' => 'deactivate', 'library' => 'billing_time'], ['class' => 'button large']) ?>
 				<?php else: ?>
-					<?= $this->html->link($t('activate'), ['id' => $item->id, 'action' => 'activate', 'library' => 'billing_recur'], ['class' => 'button large']) ?>
+					<?= $this->html->link($t('activate'), ['id' => $item->id, 'action' => 'activate', 'library' => 'billing_time'], ['class' => 'button large']) ?>
 				<?php endif ?>
 			<?php endif ?>
 			<?= $this->form->button($t('save'), ['type' => 'submit', 'class' => 'save large']) ?>

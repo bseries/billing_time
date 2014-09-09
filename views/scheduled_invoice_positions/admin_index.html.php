@@ -11,7 +11,7 @@ $this->set([
 <article class="view-<?= $this->_config['controller'] . '-' . $this->_config['template'] ?> use-list">
 
 	<div class="top-actions">
-		<?= $this->html->link($t('schedule a new invoice position'), ['action' => 'add', 'library' => 'billing_recur'], ['class' => 'button add']) ?>
+		<?= $this->html->link($t('schedule a new invoice position'), ['action' => 'add', 'library' => 'billing_time'], ['class' => 'button add']) ?>
 	</div>
 
 	<?php if ($data->count()): ?>
@@ -53,7 +53,7 @@ $this->set([
 							<?= $this->date->format($item->created, 'date') ?>
 						</time>
 					<td class="actions">
-						<?= $this->html->link($t('open'), ['id' => $item->id, 'action' => 'edit', 'library' => 'billing_recur'], ['class' => 'button']) ?>
+						<?= $this->html->link($t('open'), ['id' => $item->id, 'action' => 'edit', 'library' => 'billing_time'], ['class' => 'button']) ?>
 				<?php endforeach ?>
 			</tbody>
 		</table>
