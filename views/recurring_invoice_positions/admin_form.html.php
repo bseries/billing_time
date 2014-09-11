@@ -92,6 +92,15 @@ $this->set([
 					'value' => $item->amount_type,
 					'list' => ['net' => $t('net'), 'gross' => $t('gross')]
 				]) ?>
+				<?= $this->form->field('tax_type', [
+					'type' => 'select',
+					'label' => $t('Tax type'),
+					'list' => $taxTypes
+				]) ?>
+				<?= $this->form->field('tax_rate', [
+					'type' => 'text',
+					'label' => $t('Tax rate')
+				]) ?>
 				<?= $this->form->field('amount', [
 					'type' => 'text',
 					'label' => $t('Amount'),

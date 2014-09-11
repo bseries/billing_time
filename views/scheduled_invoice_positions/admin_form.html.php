@@ -26,10 +26,10 @@ $this->set([
 				]) ?>
 			</div>
 			<div class="grid-column-right">
-				<?= $this->form->field('execute', [
+				<?= $this->form->field('execute_on', [
 					'type' => 'date',
-					'label' => $t('Execute'),
-					'value' => $item->execute ?: date('Y-m-d'),
+					'label' => $t('Execute on'),
+					'value' => $item->execute_on ?: date('Y-m-d'),
 				]) ?>
 			</div>
 		</div>
@@ -79,6 +79,15 @@ $this->set([
 					'label' => $t('Amount type'),
 					'value' => $item->amount_type,
 					'list' => ['net' => $t('net'), 'gross' => $t('gross')]
+				]) ?>
+				<?= $this->form->field('tax_type', [
+					'type' => 'select',
+					'label' => $t('Tax type'),
+					'list' => $taxTypes
+				]) ?>
+				<?= $this->form->field('tax_rate', [
+					'type' => 'text',
+					'label' => $t('Tax rate')
 				]) ?>
 				<?= $this->form->field('amount', [
 					'type' => 'text',

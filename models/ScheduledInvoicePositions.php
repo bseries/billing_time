@@ -33,17 +33,17 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		]
 	];
 
-	public function amount($entity, $taxZone = null) {
+	public function amount($entity) {
 		return new Price(
-			$entity->amount,
+			(integer) $entity->amount,
 			$entity->amount_currency,
 			$entity->amount_type,
-			$taxZone ?: $entity->user()->taxZone()
+			(integer) $entity->tax_rate
 		);
 	}
 
-	public function totalAmount($entity, $taxZone = null) {
-		return $entity->amount($taxZone)->multiply($entity->quantity);
+	public function totalAmount($entity) {
+		return $entity->amount()->multiply($entity->quantity);
 	}
 }
 

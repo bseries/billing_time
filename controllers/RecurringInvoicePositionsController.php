@@ -17,6 +17,7 @@ use base_core\models\Users;
 use lithium\g11n\Message;
 use base_core\models\Currencies;
 use billing_time\models\RecurringInvoicePositions;
+use billing_core\models\TaxTypes;
 
 class RecurringInvoicePositionsController extends \base_core\controllers\BaseController {
 
@@ -43,7 +44,11 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 			'yearly' => $t('yearly')
 		]);
 
-		return compact('currencies', 'users', 'virtualUsers', 'frequencies');
+		if ($item) {
+			$taxTypes = TaxTypes::find('list');
+		}
+
+		return compact('currencies', 'users', 'virtualUsers', 'frequencies', 'taxTypes');
 	}
 }
 

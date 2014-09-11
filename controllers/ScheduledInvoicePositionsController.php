@@ -17,6 +17,7 @@ use base_core\models\Users;
 use lithium\g11n\Message;
 use base_core\models\Currencies;
 use billing_time\models\ScheduledInvoicePositions;
+use billing_core\models\TaxTypes;
 
 class ScheduledInvoicePositionsController extends \base_core\controllers\BaseController {
 
@@ -38,7 +39,11 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 		$virtualUsers = [null => '-'] + VirtualUsers::find('list', ['order' => 'name']);
 		$users = [null => '-'] + Users::find('list', ['order' => 'name']);
 
-		return compact('currencies', 'users', 'virtualUsers');
+		if ($item) {
+			$taxTypes = TaxTypes::find('list');
+		}
+
+		return compact('currencies', 'users', 'virtualUsers', 'taxTypes');
 	}
 }
 
