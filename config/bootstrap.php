@@ -13,6 +13,7 @@
 require 'settings.php';
 // require 'media.php';
 require 'panes.php';
+require 'jobs.php';
 // require 'widgets.php';
 
 ?>
