@@ -33,6 +33,13 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		]
 	];
 
+	public static $enum = [
+		'frequency' => [
+			'monthly',
+			'yearly'
+		]
+	];
+
 	public function amount($entity) {
 		return new Price(
 			(integer) $entity->amount,
@@ -44,22 +51,6 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 
 	public function totalAmount($entity) {
 		return $entity->amount()->multiply($entity->quantity);
-	}
-
-	// After placing the entity it is deleted.
-	public function place($entity) {
-		$user = $entity->user();
-
-		$position = InvoicePositions::create(array_intersect_key($entity->data(), [
-			'user_id', 'virtual_user_id',
-			'description', 'quantity',
-			'tax_type', 'tax_rate', 'amount_type', 'amount'
-		]));
-
-		if (!$position->save()) {
-			return false;
-		}
-		return $entity->delete();
 	}
 }
 
