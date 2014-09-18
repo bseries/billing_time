@@ -16,7 +16,7 @@ use billing_core\models\Invoices;
 use billing_time\models\ScheduledInvoicePositions;
 use billing_time\models\RecurringInvoicePositions;
 
-Jobs::recur('invoice_place_timed', function() {
+Jobs::recur('billing_time:invoice_place_timed', function() {
 	Invoices::pdo()->beginTransaction();
 
 	$positions = RecurringInvoicePositions::find('all', [
