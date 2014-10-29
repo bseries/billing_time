@@ -53,7 +53,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 
 	public function mustPlace($entity) {
 		if (!$entity->ran) {
-			return true;
+			return true;
 		}
 		$last = DateTime::createFromFormat('Y-m-d', $entity->ran);
 		$diff = $last->diff(new DateTime());
