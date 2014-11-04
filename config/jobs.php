@@ -29,6 +29,7 @@ Jobs::recur('billing_time:invoice_place_timed', function() {
 			continue;
 		}
 		if (!$position->place()) {
+			// FIXME increment runs.
 			Invoices::pdo()->rollback();
 			return false;
 		}
