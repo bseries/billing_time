@@ -21,7 +21,6 @@ $this->set([
 					<td data-sort="is-active" class="is-active flag list-sort"><?= $t('Active?') ?>
 					<td data-sort="user" class="user list-sort"><?= $t('User') ?>
 					<td data-sort="frequency" class="list-sort"><?= $t('Frequency') ?>
-					<td data-sort="execute" class="list-sort"><?= $t('Execute (on/until)') ?>
 					<td data-sort="description" class="description list-sort"><?= $t('Description') ?>
 					<td data-sort="quantity" class="quantity list-sort"><?= $t('Quantity') ?>
 					<td data-sort="total-net" class="total-net list-sort"><?= $t('Total (net)') ?>
@@ -50,14 +49,6 @@ $this->set([
 							-
 						<?php endif ?>
 					<td class="frequency"><?= $frequencies[$item->frequency] ?>
-					<td class="execute">
-						<?= $this->date->format($item->execute_start, 'date') ?>
-						&mdash;
-						<?php if ($item->execute_stop): ?>
-							<?= $this->date->format($item->execute_stop, 'date') ?>
-						<?php else: ?>
-							∞
-						<?php endif ?>
 					<td class="description"><?= $item->description ?>
 					<td class="quantity"><?= $this->number->format($item->quantity, 'decimal') ?>
 					<td><?= ($money = $item->totalAmount()) ? $this->money->format($money->getNet(), 'money') : null ?>

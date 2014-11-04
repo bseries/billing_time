@@ -33,16 +33,6 @@ $this->set([
 					'list' => $frequencies,
 					'label' => $t('Frequency')
 				]) ?>
-				<?= $this->form->field('execute_start', [
-					'type' => 'date',
-					'label' => $t('Execute first'),
-					'value' => $item->execute_start ?: date('Y-m-d'),
-				]) ?>
-				<?= $this->form->field('execute_stop', [
-					'type' => 'date',
-					'label' => $t('Execute until'),
-					'value' => $item->execute_stop
-				]) ?>
 			</div>
 		</div>
 		<div class="grid-row">
