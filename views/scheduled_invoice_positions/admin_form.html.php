@@ -26,10 +26,10 @@ $this->set([
 				]) ?>
 			</div>
 			<div class="grid-column-right">
-				<?= $this->form->field('execute_on', [
+				<?= $this->form->field('run_on', [
 					'type' => 'date',
-					'label' => $t('Execute on'),
-					'value' => $item->execute_on ?: date('Y-m-d'),
+					'label' => $t('run on'),
+					'value' => $item->run_on ?: date('Y-m-d'),
 				]) ?>
 			</div>
 		</div>
