@@ -13,6 +13,7 @@
 namespace billing_time\models;
 
 use Finance\Price;
+use billing_core\models\InvoicePositions;
 
 class RecurringInvoicePositions extends \base_core\models\Base {
 
@@ -69,16 +70,16 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 
 	public function place($entity) {
 		$position = InvoicePositions::create(array_intersect_key($entity->data(), [
-			'user_id', 'virtual_user_id',
-			'description', 'quantity',
-			'tax_type', 'tax_rate', 'amount_type', 'amount'
+			'user_id' => null, 'virtual_user_id' => null,
+			'description' => null, 'quantity' => null,
+			'tax_type' => null, 'tax_rate' => null, 'amount_type' => null, 'amount' => null
 		]));
 
-		if (!$position->save()) {
+		if (!$position->save(null, ['localize' => false])) {
 			return false;
 		}
 		return $entity->save([
-			'ran' => date('Y-m-d'),
+			'ran' => date('Y-m-d H:i:s'),
 			'runs' => $entity->runs + 1
 		], ['whitelist' => ['ran', 'runs']]);
 	}
