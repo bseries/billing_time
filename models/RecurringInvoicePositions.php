@@ -14,6 +14,7 @@ namespace billing_time\models;
 
 use Finance\Price;
 use billing_core\models\InvoicePositions;
+use DateTime;
 
 class RecurringInvoicePositions extends \base_core\models\Base {
 
@@ -56,7 +57,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		if (!$entity->ran) {
 			return true;
 		}
-		$last = DateTime::createFromFormat('Y-m-d', $entity->ran);
+		$last = DateTime::createFromFormat('Y-m-d H:i:s', $entity->ran);
 		$diff = $last->diff(new DateTime());
 
 		switch ($entity->frequency) {
