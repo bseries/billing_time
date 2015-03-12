@@ -1,6 +1,10 @@
 <?php
 
-use base_core\extensions\cms\Features;
+use lithium\g11n\Message;
+
+$t = function($message, array $options = []) {
+	return Message::translate($message, $options + ['scope' => 'billing_time', 'default' => $message]);
+};
 
 $this->set([
 	'page' => [

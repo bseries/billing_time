@@ -1,5 +1,11 @@
 <?php
 
+use lithium\g11n\Message;
+
+$t = function($message, array $options = []) {
+	return Message::translate($message, $options + ['scope' => 'billing_time', 'default' => $message]);
+};
+
 $this->set([
 	'page' => [
 		'type' => 'multiple',
@@ -8,7 +14,15 @@ $this->set([
 ]);
 
 ?>
-<article class="view-<?= $this->_config['controller'] . '-' . $this->_config['template'] ?> use-list">
+<article
+	class="use-index-table"
+	data-endpoint-sort="<?= $this->url([
+		'action' => 'index',
+		'page' => $paginator->getPages()->current,
+		'orderField' => '__ORDER_FIELD__',
+		'orderDirection' => '__ORDER_DIRECTION__'
+	]) ?>"
+>
 
 	<div class="top-actions">
 		<?= $this->html->link($t('recur a new invoice position'), ['action' => 'add', 'library' => 'billing_time'], ['class' => 'button add']) ?>
@@ -18,22 +32,16 @@ $this->set([
 		<table>
 			<thead>
 				<tr>
-					<td data-sort="is-active" class="is-active flag list-sort"><?= $t('Active?') ?>
-					<td data-sort="user" class="user list-sort"><?= $t('User') ?>
-					<td data-sort="frequency" class="list-sort"><?= $t('Frequency') ?>
-					<td data-sort="description" class="description list-sort"><?= $t('Description') ?>
-					<td data-sort="quantity" class="quantity list-sort"><?= $t('Quantity') ?>
-					<td data-sort="total-net" class="total-net list-sort"><?= $t('Total (net)') ?>
-					<td data-sort="created" class="date created list-sort"><?= $t('Created') ?>
+					<td data-sort="is-active" class="is-active flag table-sort"><?= $t('Active?') ?>
+					<td data-sort="user" class="user table-sort"><?= $t('User') ?>
+					<td data-sort="frequency" class="table-sort"><?= $t('Frequency') ?>
+					<td data-sort="description" class="description table-sort"><?= $t('Description') ?>
+					<td data-sort="quantity" class="quantity table-sort"><?= $t('Quantity') ?>
+					<td><?= $t('Total (net)') ?>
+					<td data-sort="modified" class="date modified table-sort desc"><?= $t('Modified') ?>
 					<td class="actions">
-						<?= $this->form->field('search', [
-							'type' => 'search',
-							'label' => false,
-							'placeholder' => $t('Filter'),
-							'class' => 'list-search'
-						]) ?>
 			</thead>
-			<tbody class="list">
+			<tbody>
 				<?php foreach ($data as $item): ?>
 					<?php $user = $item->user() ?>
 				<tr data-id="<?= $item->id ?>">
@@ -52,9 +60,9 @@ $this->set([
 					<td class="description"><?= $item->description ?>
 					<td class="quantity"><?= $this->number->format($item->quantity, 'decimal') ?>
 					<td><?= ($money = $item->totalAmount()) ? $this->money->format($money->getNet(), 'money') : null ?>
-					<td class="date created">
-						<time datetime="<?= $this->date->format($item->created, 'w3c') ?>">
-							<?= $this->date->format($item->created, 'date') ?>
+					<td class="date modified">
+						<time datetime="<?= $this->date->format($item->modified, 'w3c') ?>">
+							<?= $this->date->format($item->modified, 'date') ?>
 						</time>
 					<td class="actions">
 						<?= $this->html->link($t('delete'), ['id' => $item->id, 'action' => 'delete', 'library' => 'billing_time'], ['class' => 'button']) ?>
@@ -71,4 +79,6 @@ $this->set([
 	<?php else: ?>
 		<div class="none-available"><?= $t('No items available, yet.') ?></div>
 	<?php endif ?>
+
+	<?=$this->view()->render(['element' => 'paging'], compact('paginator'), ['library' => 'base_core']) ?>
 </article>

@@ -21,17 +21,11 @@ use billing_core\models\TaxTypes;
 
 class RecurringInvoicePositionsController extends \base_core\controllers\BaseController {
 
+	use \base_core\controllers\AdminIndexTrait;
 	use \base_core\controllers\AdminAddTrait;
 	use \base_core\controllers\AdminEditTrait;
 	use \base_core\controllers\AdminDeleteTrait;
 	use \base_core\controllers\AdminActivateTrait;
-
-	public function admin_index() {
-		$data = RecurringInvoicePositions::find('all', [
-			'order' => ['created' => 'DESC']
-		]);
-		return compact('data') + $this->_selects();
-	}
 
 	protected function _selects($item = null) {
 		extract(Message::aliases());
@@ -40,8 +34,8 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 		$virtualUsers = [null => '-'] + VirtualUsers::find('list', ['order' => 'name']);
 		$users = [null => '-'] + Users::find('list', ['order' => 'name']);
 		$frequencies = RecurringInvoicePositions::enum('frequency', [
-			'monthly' => $t('monthly'),
-			'yearly' => $t('yearly')
+			'monthly' => $t('monthly', ['scope' => 'billing_time']),
+			'yearly' => $t('yearly', ['scope' => 'billing_time'])
 		]);
 
 		if ($item) {

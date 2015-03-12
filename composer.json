@@ -13,17 +13,14 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "atelierdisko/base_core": "1.2.*",
-        "atelierdisko/billing_core": "1.2.*",
-        "uor/li3_flash_message": "dev-master",
+        "atelierdisko/base_core": "1.3.*",
+        "atelierdisko/billing_core": "1.3.*",
+        "atelierdisko/li3_flash_message": "1.0.*@beta",
         "unionofrad/lithium": "dev-dev",
         "composer/installers": "~1.0"
     },
     "repositories": [
-      { "type": "vcs", "url": "https://github.com/uor/li3_flash_message" },
-      { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/base_core.git" },
-      { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/billing_core.git" }
-    ],
-    "require-dev": {
-    }
+      { "type": "vcs", "url": "git@code.atelierdisko.de:base_core.git" },
+      { "type": "vcs", "url": "git@code.atelierdisko.de:billing_core.git" }
+    ]
 }
