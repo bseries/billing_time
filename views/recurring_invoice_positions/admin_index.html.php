@@ -33,7 +33,7 @@ $this->set([
 			<thead>
 				<tr>
 					<td data-sort="is-active" class="is-active flag table-sort"><?= $t('Active?') ?>
-					<td data-sort="user" class="user table-sort"><?= $t('User') ?>
+					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
 					<td data-sort="frequency" class="table-sort"><?= $t('Frequency') ?>
 					<td data-sort="description" class="description table-sort"><?= $t('Description') ?>
 					<td data-sort="quantity" class="quantity table-sort"><?= $t('Quantity') ?>
