@@ -15,7 +15,7 @@ namespace billing_time\controllers;
 use base_core\models\VirtualUsers;
 use base_core\models\Users;
 use lithium\g11n\Message;
-use base_core\models\Currencies;
+use billing_core\models\Currencies;
 use billing_time\models\RecurringInvoicePositions;
 use billing_core\models\TaxTypes;
 

@@ -62,7 +62,7 @@ $this->set([
 						<?php endif ?>
 					<td class="description"><?= $item->description ?>
 					<td class="quantity"><?= $this->number->format($item->quantity, 'decimal') ?>
-					<td><?= ($money = $item->totalAmount()) ? $this->money->format($money->getNet(), 'money') : null ?>
+					<td><?= $this->price->format($item->totalAmount(), 'net') ?>
 					<td class="date modified">
 						<time datetime="<?= $this->date->format($item->modified, 'w3c') ?>">
 							<?= $this->date->format($item->modified, 'date') ?>

@@ -12,7 +12,7 @@
 
 namespace billing_time\models;
 
-use Finance\Price;
+use AD\Finance\Price;
 use billing_core\models\InvoicePositions;
 use DateTime;
 
@@ -45,7 +45,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 			(integer) $entity->amount,
 			$entity->amount_currency,
 			$entity->amount_type,
-			(integer) $entity->tax_rate
+			(integer) $entity->amount_rate
 		);
 	}
 
@@ -73,7 +73,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		$position = InvoicePositions::create(array_intersect_key($entity->data(), [
 			'user_id' => null, 'virtual_user_id' => null,
 			'description' => null, 'quantity' => null,
-			'tax_type' => null, 'tax_rate' => null, 'amount_type' => null, 'amount' => null
+			'amount_rate' => null, 'amount_type' => null, 'amount' => null
 		]));
 
 		if (!$position->save(null, ['localize' => false])) {

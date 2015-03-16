@@ -12,7 +12,7 @@
 
 namespace billing_time\models;
 
-use Finance\Price;
+use AD\Finance\Price;
 
 // In the moment of generating an invoice position the price is finalized.
 class ScheduledInvoicePositions extends \base_core\models\Base {
@@ -45,7 +45,7 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 			(integer) $entity->amount,
 			$entity->amount_currency,
 			$entity->amount_type,
-			(integer) $entity->tax_rate
+			(integer) $entity->amount_rate
 		);
 	}
 

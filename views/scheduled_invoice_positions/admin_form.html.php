@@ -85,19 +85,14 @@ $this->set([
 					'value' => $item->amount_type,
 					'list' => ['net' => $t('net'), 'gross' => $t('gross')]
 				]) ?>
-				<?= $this->form->field('tax_type', [
-					'type' => 'select',
-					'label' => $t('Tax type'),
-					'list' => $taxTypes
-				]) ?>
-				<?= $this->form->field('tax_rate', [
+				<?= $this->form->field('amount_rate', [
 					'type' => 'text',
 					'label' => $t('Tax rate')
 				]) ?>
 				<?= $this->form->field('amount', [
 					'type' => 'text',
 					'label' => $t('Amount'),
-					'value' => $item->exists() ? $this->money->format($item->amount(), 'decimal') : null
+					'value' => $item->exists() ? $this->money->format($item->amount(), ['currency' => false]) : null
 				]) ?>
 			</div>
 			<div class="grid-column-right">
@@ -105,7 +100,7 @@ $this->set([
 					'type' => 'text',
 					'disabled' => true,
 					'label' => $t('Total amount (net)'),
-					'value' => $item->exists() ? $this->money->format($item->totalAmount(), 'decimal') : null
+					'value' => $item->exists() ? $this->price->format($item->totalAmount(), 'net', ['currency' => false]) : null
 				]) ?>
 			</div>
 		</div>

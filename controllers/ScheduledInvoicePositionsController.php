@@ -14,7 +14,7 @@ namespace billing_time\controllers;
 
 use base_core\models\VirtualUsers;
 use base_core\models\Users;
-use base_core\models\Currencies;
+use billing_core\models\Currencies;
 use billing_core\models\TaxTypes;
 
 class ScheduledInvoicePositionsController extends \base_core\controllers\BaseController {
