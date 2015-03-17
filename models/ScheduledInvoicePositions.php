@@ -23,6 +23,17 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		'source' => 'billing_scheduled_invoice_positions'
 	];
 
+	public $belongsTo = [
+		'User' => [
+			'to' => 'base_core\models\Users',
+			'key' => 'user_id'
+		],
+		'VirtualUser' => [
+			'to' => 'base_core\models\VirtualUsers',
+			'key' => 'virtual_user_id'
+		]
+	];
+
 	protected static $_actsAs = [
 		'base_core\extensions\data\behavior\Timestamp',
 		'base_core\extensions\data\behavior\Localizable' => [
