@@ -42,6 +42,14 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 				'amount' => 'money',
 				'quantity' => 'decimal'
 			]
+		],
+		'base_core\extensions\data\behavior\Searchable' => [
+			'fields' => [
+				'description',
+				'quantity',
+				'runs',
+				'frequency'
+			]
 		]
 	];
 
