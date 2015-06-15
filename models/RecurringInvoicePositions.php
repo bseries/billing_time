@@ -18,8 +18,6 @@ use DateTime;
 
 class RecurringInvoicePositions extends \base_core\models\Base {
 
-	use \base_core\models\UserTrait;
-
 	protected $_meta = [
 		'source' => 'billing_recurring_invoice_positions'
 	];
@@ -36,6 +34,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 	];
 
 	protected static $_actsAs = [
+		'base_core\extensions\data\behavior\Ownable',
 		'base_core\extensions\data\behavior\Timestamp',
 		'base_core\extensions\data\behavior\Localizable' => [
 			'fields' => [

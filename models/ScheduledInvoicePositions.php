@@ -17,8 +17,6 @@ use AD\Finance\Price;
 // In the moment of generating an invoice position the price is finalized.
 class ScheduledInvoicePositions extends \base_core\models\Base {
 
-	use \base_core\models\UserTrait;
-
 	protected $_meta = [
 		'source' => 'billing_scheduled_invoice_positions'
 	];
@@ -35,6 +33,7 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 	];
 
 	protected static $_actsAs = [
+		'base_core\extensions\data\behavior\Ownable',
 		'base_core\extensions\data\behavior\Timestamp',
 		'base_core\extensions\data\behavior\Localizable' => [
 			'fields' => [
