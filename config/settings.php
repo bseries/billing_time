@@ -10,6 +10,8 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
+namespace billing_time\config;
+
 use base_core\extensions\cms\Settings;
 
 ?>
