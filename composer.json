@@ -1,10 +1,9 @@
 {
     "name": "atelierdisko/billing_time",
     "description": "Scheduling and Recurring functionality for Billing.",
-    "license": "proprietary",
     "homepage": "http://atelierdisko.de",
     "type": "lithium-library",
-    "minimum-stability": "dev",
+    "license": "proprietary",
     "authors": [
       {
         "name": "Atelier Disko",
