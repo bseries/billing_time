@@ -14,7 +14,7 @@ namespace billing_time\config;
 
 use base_core\extensions\cms\Jobs;
 use base_core\models\Users;
-use billing_core\models\Invoices;
+use billing_invoice\models\Invoices;
 use billing_time\models\ScheduledInvoicePositions;
 use billing_time\models\RecurringInvoicePositions;
 

@@ -13,7 +13,7 @@
 namespace billing_time\models;
 
 use AD\Finance\Price;
-use billing_core\models\InvoicePositions;
+use billing_invoice\models\InvoicePositions;
 use DateTime;
 
 class RecurringInvoicePositions extends \base_core\models\Base {
