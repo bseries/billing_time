@@ -1,5 +1,5 @@
 Billing Time
--- Scheduling and Recurring functionality for Billing.
+-- Scheduling and Recurring functionality for Banque.
 
 Synopsis
 --------
