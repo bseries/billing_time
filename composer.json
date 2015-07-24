@@ -14,11 +14,13 @@
         "php": ">=5.5.0",
         "atelierdisko/base_core": "1.4.*",
         "atelierdisko/billing_core": "1.4.*",
+        "atelierdisko/billing_invoice": "1.4.*",
         "unionofrad/lithium": "1.0.*@dev",
         "composer/installers": "1.*@stable"
     },
     "repositories": [
       { "type": "vcs", "url": "git@code.atelierdisko.de:base_core.git" },
-      { "type": "vcs", "url": "git@code.atelierdisko.de:billing_core.git" }
+      { "type": "vcs", "url": "git@code.atelierdisko.de:billing_core.git" },
+      { "type": "vcs", "url": "git@code.atelierdisko.de:billing_invoice.git" }
     ]
 }
