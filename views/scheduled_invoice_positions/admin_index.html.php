@@ -50,19 +50,10 @@ $this->set([
 			</thead>
 			<tbody>
 				<?php foreach ($data as $item): ?>
-					<?php $user = $item->user() ?>
 				<tr data-id="<?= $item->id ?>">
 					<td class="flag"><i class="material-icons"><?= ($item->is_active ? 'done' : '') ?></i>
 					<td class="user">
-						<?php if ($user): ?>
-							<?= $this->html->link($user->number, [
-								'controller' => $user->isVirtual() ? 'VirtualUsers' : 'Users',
-								'action' => 'edit', 'id' => $user->id,
-								'library' => 'base_core'
-							]) ?>
-						<?php else: ?>
-							-
-						<?php endif ?>
+						<?= $this->user->link($item->user()) ?>
 					<td class="run-on">
 						<?php if ($item->run_on == date('Y-m-d')): ?>
 							<?= $t('immediately') ?>

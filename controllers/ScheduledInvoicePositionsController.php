@@ -12,7 +12,6 @@
 
 namespace billing_time\controllers;
 
-use base_core\models\VirtualUsers;
 use base_core\models\Users;
 use billing_core\models\Currencies;
 use billing_core\models\TaxTypes;
@@ -27,14 +26,13 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 
 	protected function _selects($item = null) {
 		$currencies = Currencies::find('list');
-		$virtualUsers = [null => '-'] + VirtualUsers::find('list', ['order' => 'name']);
 		$users = [null => '-'] + Users::find('list', ['order' => 'name']);
 
 		if ($item) {
 			$taxTypes = TaxTypes::find('list');
 		}
 
-		return compact('currencies', 'users', 'virtualUsers', 'taxTypes');
+		return compact('currencies', 'users', 'taxTypes');
 	}
 }
 

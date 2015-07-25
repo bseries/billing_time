@@ -12,7 +12,6 @@
 
 namespace billing_time\controllers;
 
-use base_core\models\VirtualUsers;
 use base_core\models\Users;
 use lithium\g11n\Message;
 use billing_core\models\Currencies;
@@ -31,7 +30,6 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 		extract(Message::aliases());
 
 		$currencies = Currencies::find('list');
-		$virtualUsers = [null => '-'] + VirtualUsers::find('list', ['order' => 'name']);
 		$users = [null => '-'] + Users::find('list', ['order' => 'name']);
 		$frequencies = RecurringInvoicePositions::enum('frequency', [
 			'monthly' => $t('monthly', ['scope' => 'billing_time']),
@@ -42,7 +40,7 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 			$taxTypes = TaxTypes::find('list');
 		}
 
-		return compact('currencies', 'users', 'virtualUsers', 'frequencies', 'taxTypes');
+		return compact('currencies', 'users', 'frequencies', 'taxTypes');
 	}
 }
 
