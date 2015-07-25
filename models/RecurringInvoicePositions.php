@@ -59,7 +59,8 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 
 	public static $enum = [
 		'frequency' => [
-			'monthly'
+			'monthly',
+			'yearly'
 		]
 	];
 
@@ -96,7 +97,8 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		$position = InvoicePositions::create(array_intersect_key($entity->data(), [
 			'user_id' => null, 'virtual_user_id' => null,
 			'description' => null, 'quantity' => null,
-			'amount_rate' => null, 'amount_type' => null, 'amount' => null
+			'amount_rate' => null, 'amount_type' => null, 'amount' => null,
+			'tags' => null
 		]));
 
 		if (!$position->save(null, ['localize' => false])) {

@@ -23,6 +23,7 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 	use \base_core\controllers\AdminAddTrait;
 	use \base_core\controllers\AdminEditTrait;
 	use \base_core\controllers\AdminDeleteTrait;
+	use \base_core\controllers\AdminActivateTrait;
 
 	protected function _selects($item = null) {
 		$currencies = Currencies::find('list');

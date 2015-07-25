@@ -14,7 +14,9 @@ $this->set([
 		'empty' => false,
 		'object' => $t('scheduled invoice position')
 	],
-	'meta' => []
+	'meta' => [
+		'is_active' => $item->is_active ? $t('active') : $t('inactive'),
+	]
 ]);
 
 ?>
@@ -58,9 +60,9 @@ $this->set([
 
 			<div class="grid-column-left">
 				<?= $this->form->field('run_on', [
-					'type' => 'date',
+					'type' => 'datetime',
 					'label' => $t('run on'),
-					'value' => $item->run_on ?: date('Y-m-d'),
+					'value' => $item->run_on ?: date('Y-m-d H:i:s'),
 				]) ?>
 			</div>
 			<div class="grid-column-right"></div>
@@ -117,6 +119,13 @@ $this->set([
 		</div>
 
 		<div class="bottom-actions">
+			<?php if ($item->exists()): ?>
+				<?php if ($item->is_active): ?>
+					<?= $this->html->link($t('deactivate'), ['id' => $item->id, 'action' => 'deactivate', 'library' => 'billing_time'], ['class' => 'button large']) ?>
+				<?php else: ?>
+					<?= $this->html->link($t('activate'), ['id' => $item->id, 'action' => 'activate', 'library' => 'billing_time'], ['class' => 'button large']) ?>
+				<?php endif ?>
+			<?php endif ?>
 			<?= $this->form->button($t('save'), ['type' => 'submit', 'class' => 'save large']) ?>
 		</div>
 

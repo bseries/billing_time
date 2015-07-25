@@ -54,13 +54,6 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		]
 	];
 
-	public static $enum = [
-		'frequency' => [
-			'monthly',
-			'yearly'
-		]
-	];
-
 	public function amount($entity) {
 		return new Price(
 			(integer) $entity->amount,
@@ -72,6 +65,24 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 
 	public function totalAmount($entity) {
 		return $entity->amount()->multiply($entity->quantity);
+	}
+
+	public function mustPlace($entity) {
+		$now = DateTime();
+		$will = DateTime::createFromFormat('Y-m-d H:i:s', $entity->run_on);
+
+		return $will <= $now;
+	}
+
+	public function place($entity) {
+		$position = InvoicePositions::create(array_intersect_key($entity->data(), [
+			'user_id' => null, 'virtual_user_id' => null,
+			'description' => null, 'quantity' => null,
+			'amount_rate' => null, 'amount_type' => null, 'amount' => null,
+			'tags' => null
+		]));
+
+		return $position->save(null, ['localize' => false]) && $entity->delete();
 	}
 }
 

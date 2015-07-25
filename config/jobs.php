@@ -13,29 +13,32 @@
 namespace billing_time\config;
 
 use base_core\extensions\cms\Jobs;
-use base_core\models\Users;
 use billing_invoice\models\Invoices;
-use billing_time\models\ScheduledInvoicePositions;
-use billing_time\models\RecurringInvoicePositions;
 
 Jobs::recur('billing_time:invoice_place_timed', function() {
 	Invoices::pdo()->beginTransaction();
 
-	$positions = RecurringInvoicePositions::find('all', [
-		'conditions' => [
-			'is_active' => true
-		]
-	]);
-	foreach ($positions as $position) {
-		if (!$position->mustPlace()) {
-			continue;
-		}
-		if (!$position->place()) {
-			// FIXME increment runs.
-			Invoices::pdo()->rollback();
-			return false;
+	$models = [
+		'billing_time\models\RecurringInvoicePositions',
+		'billing_time\models\ScheduledInvoicePositions'
+	];
+	foreach ($models as $model) {
+		$positions = $model::find('all', [
+			'conditions' => [
+				'is_active' => true
+			]
+		]);
+		foreach ($positions as $position) {
+			if (!$position->mustPlace()) {
+				continue;
+			}
+			if (!$position->place()) {
+				Invoices::pdo()->rollback();
+				return false;
+			}
 		}
 	}
+
 	Invoices::pdo()->commit();
 }, [
 	'frequency' => Jobs::FREQUENCY_LOW
