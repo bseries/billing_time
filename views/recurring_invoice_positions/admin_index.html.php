@@ -26,14 +26,14 @@ $this->set([
 >
 
 	<div class="top-actions">
-		<?= $this->html->link($t('recur a new invoice position'), ['action' => 'add', 'library' => 'billing_time'], ['class' => 'button add']) ?>
+		<?= $this->html->link($t('recur position'), ['action' => 'add'], ['class' => 'button add']) ?>
 	</div>
 
 	<?php if ($data->count()): ?>
 		<table>
 			<thead>
 				<tr>
-					<td data-sort="is-active" class="is-active flag table-sort"><?= $t('Active?') ?>
+					<td data-sort="is-active" class="flag table-sort"><?= $t('Active?') ?>
 					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
 					<td data-sort="frequency" class="table-sort"><?= $t('Frequency') ?>
 					<td data-sort="description" class="description table-sort"><?= $t('Description') ?>
@@ -53,7 +53,7 @@ $this->set([
 				<?php foreach ($data as $item): ?>
 					<?php $user = $item->user() ?>
 				<tr data-id="<?= $item->id ?>">
-					<td class="is-active flag"><?= $item->is_active ? '✓ ' : '×' ?>
+					<td class="flag"><i class="material-icons"><?= ($item->is_active ? 'done' : '') ?></i>
 					<td class="user">
 						<?php if ($user): ?>
 							<?= $this->html->link($user->number, [
