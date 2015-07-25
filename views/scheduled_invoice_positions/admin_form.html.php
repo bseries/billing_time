@@ -24,21 +24,8 @@ $this->set([
 		<?= $this->form->field('id', ['type' => 'hidden']) ?>
 
 		<div class="grid-row">
-			<div class="grid-column-left">
-				<?= $this->form->field('description', [
-					'type' => 'text',
-					'label' => $t('Description')
-				]) ?>
-			</div>
-			<div class="grid-column-right">
-				<?= $this->form->field('run_on', [
-					'type' => 'date',
-					'label' => $t('run on'),
-					'value' => $item->run_on ?: date('Y-m-d'),
-				]) ?>
-			</div>
-		</div>
-		<div class="grid-row">
+			<h1 class="h-gamma"><?= $t('Recipient') ?></h1>
+
 			<div class="grid-column-left"></div>
 			<div class="grid-column-right">
 				<div class="compound-users">
@@ -63,6 +50,36 @@ $this->set([
 						'checked' => $user ? !$user->isVirtual() : true
 					]) ?>
 				</div>
+			</div>
+		</div>
+
+		<div class="grid-row">
+			<h1 class="h-gamma"><?= $t('Execution') ?></h1>
+
+			<div class="grid-column-left">
+				<?= $this->form->field('run_on', [
+					'type' => 'date',
+					'label' => $t('run on'),
+					'value' => $item->run_on ?: date('Y-m-d'),
+				]) ?>
+			</div>
+			<div class="grid-column-right"></div>
+		</div>
+
+		<div class="grid-row">
+			<div class="grid-column-left">
+				<?= $this->form->field('description', [
+					'type' => 'textarea',
+					'label' => $t('Description')
+				]) ?>
+			</div>
+			<div class="grid-column-right">
+				<?= $this->form->field('tags', [
+					'value' => $item->tags(),
+					'label' => $t('Tags'),
+					'placeholder' => 'foo, bar',
+					'class' => 'input--tags'
+				]) ?>
 			</div>
 		</div>
 
@@ -96,12 +113,6 @@ $this->set([
 				]) ?>
 			</div>
 			<div class="grid-column-right">
-				<?= $this->form->field('total_net', [
-					'type' => 'text',
-					'disabled' => true,
-					'label' => $t('Total amount (net)'),
-					'value' => $item->exists() ? $this->price->format($item->totalAmount(), 'net', ['currency' => false]) : null
-				]) ?>
 			</div>
 		</div>
 

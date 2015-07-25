@@ -8,6 +8,8 @@
 
 ### Added
 
+- Tag support.
+
 ### Changed
 
 ### Backwards Incompatible Changes

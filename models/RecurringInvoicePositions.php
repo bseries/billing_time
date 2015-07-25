@@ -42,6 +42,11 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 				'quantity' => 'decimal'
 			]
 		],
+		'li3_taggable\extensions\data\behavior\Taggable' => [
+			'field' => 'tags',
+			'tagsModel' => 'base_tag\models\Tags',
+			'filters' => ['strtolower']
+		],
 		'base_core\extensions\data\behavior\Searchable' => [
 			'fields' => [
 				'description',
