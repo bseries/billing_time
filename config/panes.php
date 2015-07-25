@@ -20,13 +20,13 @@ extract(Message::aliases());
 Panes::register('billing.scheduled', [
 	'title' => $t('Scheduled'),
 	'url' => ['controller' => 'ScheduledInvoicePositions', 'action' => 'index', 'library' => 'billing_time', 'admin' => true],
-	'weight' => 60
+	'weight' => 44
 ]);
 
 Panes::register('billing.recurring', [
 	'title' => $t('Recurring'),
 	'url' => ['controller' => 'RecurringInvoicePositions', 'action' => 'index', 'library' => 'billing_time', 'admin' => true],
-	'weight' => 55
+	'weight' => 45
 ]);
 
 ?>
