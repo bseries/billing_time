@@ -71,8 +71,6 @@ $this->set([
 							<?= $this->date->format($item->modified, 'date') ?>
 						</time>
 					<td class="actions">
-						<?= $this->html->link($t('delete'), ['id' => $item->id, 'action' => 'delete', 'library' => 'billing_time'], ['class' => 'button']) ?>
-
 						<?= $this->html->link($item->is_active ? $t('deactivate') : $t('activate'), [
 							'id' => $item->id, 'action' => $item->is_active ? 'deactivate' : 'activate'
 						], ['class' => 'button']) ?>

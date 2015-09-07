@@ -102,14 +102,27 @@ $this->set([
 		</div>
 
 		<div class="bottom-actions">
-			<?php if ($item->exists()): ?>
-				<?php if ($item->is_active): ?>
-					<?= $this->html->link($t('deactivate'), ['id' => $item->id, 'action' => 'deactivate', 'library' => 'billing_time'], ['class' => 'button large']) ?>
-				<?php else: ?>
-					<?= $this->html->link($t('activate'), ['id' => $item->id, 'action' => 'activate', 'library' => 'billing_time'], ['class' => 'button large']) ?>
+			<div class="bottom-actions__left">
+				<?php if ($item->exists()): ?>
+					<?= $this->html->link($t('delete'), [
+						'action' => 'delete', 'id' => $item->id
+					], ['class' => 'button large delete']) ?>
 				<?php endif ?>
-			<?php endif ?>
-			<?= $this->form->button($t('save'), ['type' => 'submit', 'class' => 'save large']) ?>
+			</div>
+			<div class="bottom-actions__right">
+				<?php if ($item->exists()): ?>
+					<?= $this->html->link(
+						$item->is_active ? $t('deactivate') : $t('activate'),
+						['id' => $item->id, 'action' => $item->is_active ? 'deactivate' : 'activate'],
+						['class' => 'button large']
+					) ?>
+				<?php endif ?>
+
+				<?= $this->form->button($t('save'), [
+					'type' => 'submit',
+					'class' => 'button large save'
+				]) ?>
+			</div>
 		</div>
 
 	<?=$this->form->end() ?>
