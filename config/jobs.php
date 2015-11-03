@@ -17,7 +17,7 @@
 
 namespace billing_time\config;
 
-use base_core\extensions\cms\Jobs;
+use base_core\async\Jobs;
 use billing_invoice\models\Invoices;
 
 Jobs::recur('billing_time:invoice_place_timed', function() {
