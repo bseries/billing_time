@@ -85,6 +85,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		$last = DateTime::createFromFormat('Y-m-d H:i:s', $entity->ran);
 		$diff = $last->diff(new DateTime());
 
+		// FIXME Check if this should be >= 0
 		switch ($entity->frequency) {
 			case 'monthly':
 				return $diff->m >= 1;
