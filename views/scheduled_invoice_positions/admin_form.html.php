@@ -45,8 +45,9 @@ $this->set([
 				<?= $this->form->field('run_on', [
 					'type' => 'datetime',
 					'label' => $t('run on'),
-					'value' => $item->run_on ?: date('Y-m-d H:i:s'),
+					'value' => $item->run_on ?: date('Y-m-d') . ' 14:00:00',
 				]) ?>
+				<div class="help"><?= $t('The date and time on which the position will be placed.') ?></div>
 			</div>
 			<div class="grid-column-right"></div>
 		</div>
