@@ -35,7 +35,7 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 		extract(Message::aliases());
 
 		$currencies = Currencies::find('list');
-		$users = [null => '-'] + Users::find('list', ['order' => 'name']);
+		$users = [null => '-'] + Users::find('list', ['order' => 'number']);
 		$frequencies = RecurringInvoicePositions::enum('frequency', [
 			'monthly' => $t('monthly', ['scope' => 'billing_time']),
 			'yearly' => $t('yearly', ['scope' => 'billing_time'])

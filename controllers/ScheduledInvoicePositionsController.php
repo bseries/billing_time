@@ -31,7 +31,7 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 
 	protected function _selects($item = null) {
 		$currencies = Currencies::find('list');
-		$users = [null => '-'] + Users::find('list', ['order' => 'name']);
+		$users = [null => '-'] + Users::find('list', ['order' => 'number']);
 
 		if ($item) {
 			$taxTypes = TaxTypes::find('list');
