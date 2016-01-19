@@ -41,19 +41,19 @@ $this->set([
 			<h1 class="h-gamma"><?= $t('Execution') ?></h1>
 
 			<div class="grid-column-left">
-				<?= $this->form->field('frequency', [
-					'type' => 'select',
-					'list' => $frequencies,
-					'label' => $t('Frequency')
-				]) ?>
-			</div>
-			<div class="grid-column-right">
 				<?= $this->form->field('first_run', [
 					'type' => 'datetime',
 					'label' => $t('First run'),
 					'value' => $item->first_run ?: date('Y-m-d') . ' 14:00:00'
 				]) ?>
 				<div class="help"><?= $t('The date and time from which on the position will begin to be placed.') ?></div>
+			</div>
+			<div class="grid-column-right">
+				<?= $this->form->field('frequency', [
+					'type' => 'select',
+					'list' => $frequencies,
+					'label' => $t('Frequency')
+				]) ?>
 			</div>
 		</div>
 
