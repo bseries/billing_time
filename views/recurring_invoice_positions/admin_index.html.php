@@ -33,11 +33,12 @@ $this->set([
 		<table>
 			<thead>
 				<tr>
+					<td class="flag"><?= $t('Run?') ?>
 					<td data-sort="is-active" class="flag table-sort"><?= $t('Active?') ?>
 					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
 					<td data-sort="frequency" class="table-sort"><?= $t('Frequency') ?>
 					<td data-sort="runs" class="table-sort"><?= $t('Runs') ?>
-					<td data-sort="ran" class="table-sort"><?= $t('Ran') ?>
+					<td data-sort="ran" class="table-sort"><?= $t('Last run') ?>
 					<td data-sort="description" class="description table-sort"><?= $t('Description') ?>
 					<td><?= $t('Total (net)') ?>
 					<td data-sort="modified" class="date modified table-sort desc"><?= $t('Modified') ?>
@@ -53,6 +54,7 @@ $this->set([
 			<tbody>
 				<?php foreach ($data as $item): ?>
 				<tr data-id="<?= $item->id ?>">
+					<td class="flag"><i class="material-icons"><?= ($item->mustPlace() ? 'warning' : '') ?></i>
 					<td class="flag"><i class="material-icons"><?= ($item->is_active ? 'done' : '') ?></i>
 					<td class="user">
 						<?= $this->user->link($item->user()) ?>
@@ -71,6 +73,11 @@ $this->set([
 							<?= $this->date->format($item->modified, 'date') ?>
 						</time>
 					<td class="actions">
+
+						<?php if ($item->mustPlace()): ?>
+							<?= $this->html->link($t('place'), ['id' => $item->id, 'action' => 'place', 'library' => 'billing_time'], ['class' => 'button']) ?>
+						<?php endif ?>
+
 						<?= $this->html->link($item->is_active ? $t('deactivate') : $t('activate'), [
 							'id' => $item->id, 'action' => $item->is_active ? 'deactivate' : 'activate'
 						], ['class' => 'button']) ?>
@@ -82,6 +89,10 @@ $this->set([
 	<?php else: ?>
 		<div class="none-available"><?= $t('No items available, yet.') ?></div>
 	<?php endif ?>
+
+	<div class="bottom-help">
+		<?= $t("Recurring invoice positions can be placed as pending positions, from which in turn invoices may be generated.") ?>
+	</div>
 
 	<?=$this->view()->render(['element' => 'paging'], compact('paginator'), ['library' => 'base_core']) ?>
 </article>

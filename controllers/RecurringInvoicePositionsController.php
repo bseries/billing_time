@@ -18,10 +18,11 @@
 namespace billing_time\controllers;
 
 use base_core\models\Users;
-use lithium\g11n\Message;
 use billing_core\models\Currencies;
-use billing_time\models\RecurringInvoicePositions;
 use billing_core\models\TaxTypes;
+use billing_time\models\RecurringInvoicePositions;
+use li3_flash_message\extensions\storage\FlashMessage;
+use lithium\g11n\Message;
 
 class RecurringInvoicePositionsController extends \base_core\controllers\BaseController {
 
@@ -30,6 +31,24 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 	use \base_core\controllers\AdminEditTrait;
 	use \base_core\controllers\AdminDeleteTrait;
 	use \base_core\controllers\AdminActivateTrait;
+
+	public function admin_place() {
+		extract(Message::aliases());
+
+		$item = RecurringInvoicePositions::find('first', [
+			'conditions' => ['id' => $this->request->id]
+		]);
+		if ($item->mustPlace() && $item->place()) {
+			FlashMessage::write($t('Successfully placed position.', ['scope' => 'base_core']), [
+				'level' => 'success'
+			]);
+		} else {
+			FlashMessage::write($t('Failed to place position.', ['scope' => 'base_core']), [
+				'level' => 'error'
+			]);
+		}
+		return $this->redirect($this->request->referer());
+	}
 
 	protected function _selects($item = null) {
 		extract(Message::aliases());

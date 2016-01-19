@@ -18,8 +18,8 @@
 namespace billing_time\models;
 
 use AD\Finance\Price;
-use billing_invoice\models\InvoicePositions;
 use DateTime;
+use billing_invoice\models\InvoicePositions;
 
 class RecurringInvoicePositions extends \base_core\models\Base {
 
@@ -79,11 +79,21 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 	}
 
 	public function mustPlace($entity) {
+		$now = new DateTime();
+
+		if ($entity->first_run) {
+			$first = DateTime::createFromFormat('Y-m-d H:i:s', $entity->first_run);
+
+			// first_run is inclusive, will run once reached date
+			if ($now->getTimestamp() < $first->getTimestamp()) {
+				return false;
+			}
+		}
 		if (!$entity->ran) {
 			return true;
 		}
 		$last = DateTime::createFromFormat('Y-m-d H:i:s', $entity->ran);
-		$diff = $last->diff(new DateTime());
+		$diff = $last->diff($now);
 
 		// FIXME Check if this should be >= 0
 		switch ($entity->frequency) {

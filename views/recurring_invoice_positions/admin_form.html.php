@@ -47,7 +47,14 @@ $this->set([
 					'label' => $t('Frequency')
 				]) ?>
 			</div>
-			<div class="grid-column-right"></div>
+			<div class="grid-column-right">
+				<?= $this->form->field('first_run', [
+					'type' => 'date',
+					'label' => $t('First run'),
+					'value' => $item->first_run ?: date('Y-m-d')
+				]) ?>
+				<div class="help"><?= $t('The day on which the position will start to be placed.') ?></div>
+			</div>
 		</div>
 
 		<div class="grid-row">
@@ -110,6 +117,11 @@ $this->set([
 			</div>
 			<div class="bottom-actions__right">
 				<?php if ($item->exists()): ?>
+
+					<?php if ($item->mustPlace()): ?>
+						<?= $this->html->link($t('place'), ['id' => $item->id, 'action' => 'place', 'library' => 'billing_time'], ['class' => 'button large']) ?>
+					<?php endif ?>
+
 					<?= $this->html->link(
 						$item->is_active ? $t('deactivate') : $t('activate'),
 						['id' => $item->id, 'action' => $item->is_active ? 'deactivate' : 'activate'],
