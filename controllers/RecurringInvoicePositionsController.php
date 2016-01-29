@@ -19,7 +19,7 @@ namespace billing_time\controllers;
 
 use base_core\models\Users;
 use billing_core\models\Currencies;
-use billing_core\models\TaxTypes;
+use billing_core\billing\TaxTypes;
 use billing_time\models\RecurringInvoicePositions;
 use li3_flash_message\extensions\storage\FlashMessage;
 use lithium\g11n\Message;
@@ -61,7 +61,7 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 		]);
 
 		if ($item) {
-			$taxTypes = TaxTypes::find('list');
+			$taxTypes = TaxTypes::enum();
 		}
 
 		return compact('currencies', 'users', 'frequencies', 'taxTypes');

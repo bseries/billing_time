@@ -19,7 +19,7 @@ namespace billing_time\controllers;
 
 use base_core\models\Users;
 use billing_core\models\Currencies;
-use billing_core\models\TaxTypes;
+use billing_core\billing\TaxTypes;
 
 class ScheduledInvoicePositionsController extends \base_core\controllers\BaseController {
 
@@ -34,7 +34,7 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 		$users = [null => '-'] + Users::find('list', ['order' => 'number']);
 
 		if ($item) {
-			$taxTypes = TaxTypes::find('list');
+			$taxTypes = TaxTypes::enum();
 		}
 
 		return compact('currencies', 'users', 'taxTypes');
