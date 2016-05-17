@@ -50,7 +50,8 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		'base_core\extensions\data\behavior\Searchable' => [
 			'fields' => [
 				'description',
-				'quantity'
+				'quantity',
+				'tags'
 			]
 		]
 	];
