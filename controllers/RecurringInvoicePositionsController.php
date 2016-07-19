@@ -53,18 +53,19 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 	protected function _selects($item = null) {
 		extract(Message::aliases());
 
-		$currencies = Currencies::find('list');
-		$users = [null => '-'] + Users::find('list', ['order' => 'number']);
 		$frequencies = RecurringInvoicePositions::enum('frequency', [
 			'monthly' => $t('monthly', ['scope' => 'billing_time']),
 			'yearly' => $t('yearly', ['scope' => 'billing_time'])
 		]);
 
 		if ($item) {
+			$this->_users($item, ['field' => 'user_id', 'empty' => true]);
+			$currencies = Currencies::find('list');
 			$taxTypes = TaxTypes::enum();
-		}
 
-		return compact('currencies', 'users', 'frequencies', 'taxTypes');
+			return compact('currencies', 'users', 'frequencies', 'taxTypes');
+		}
+		return compact('frequencies');
 	}
 }
 

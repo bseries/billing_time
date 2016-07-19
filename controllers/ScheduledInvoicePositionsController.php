@@ -30,14 +30,14 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 	use \base_core\controllers\AdminActivateTrait;
 
 	protected function _selects($item = null) {
-		$currencies = Currencies::find('list');
-		$users = [null => '-'] + Users::find('list', ['order' => 'number']);
-
 		if ($item) {
+			$this->_users($item, ['field' => 'user_id', 'empty' => true]);
+			$currencies = Currencies::find('list');
 			$taxTypes = TaxTypes::enum();
-		}
 
-		return compact('currencies', 'users', 'taxTypes');
+			return compact('currencies', 'users', 'taxTypes');
+		}
+		return [];
 	}
 }
 
