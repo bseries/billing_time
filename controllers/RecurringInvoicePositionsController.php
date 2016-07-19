@@ -17,7 +17,6 @@
 
 namespace billing_time\controllers;
 
-use base_core\models\Users;
 use billing_core\models\Currencies;
 use billing_core\billing\TaxTypes;
 use billing_time\models\RecurringInvoicePositions;
@@ -31,6 +30,7 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 	use \base_core\controllers\AdminEditTrait;
 	use \base_core\controllers\AdminDeleteTrait;
 	use \base_core\controllers\AdminActivateTrait;
+	use \base_core\controllers\UsersTrait;
 
 	public function admin_place() {
 		extract(Message::aliases());

@@ -17,7 +17,6 @@
 
 namespace billing_time\controllers;
 
-use base_core\models\Users;
 use billing_core\models\Currencies;
 use billing_core\billing\TaxTypes;
 
@@ -28,6 +27,7 @@ class ScheduledInvoicePositionsController extends \base_core\controllers\BaseCon
 	use \base_core\controllers\AdminEditTrait;
 	use \base_core\controllers\AdminDeleteTrait;
 	use \base_core\controllers\AdminActivateTrait;
+	use \base_core\controllers\UsersTrait;
 
 	protected function _selects($item = null) {
 		if ($item) {
