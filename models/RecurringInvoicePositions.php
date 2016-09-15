@@ -54,7 +54,9 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 				'quantity',
 				'runs',
 				'frequency',
-				'tags'
+				'tags',
+				'User.number',
+				'User.name',
 			]
 		]
 	];

@@ -51,7 +51,9 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 			'fields' => [
 				'description',
 				'quantity',
-				'tags'
+				'tags',
+				'User.number',
+				'User.name',
 			]
 		]
 	];
