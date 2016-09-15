@@ -59,7 +59,7 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 		]);
 
 		if ($item) {
-			$this->_users($item, ['field' => 'user_id', 'empty' => true]);
+			$users = $this->_users($item, ['field' => 'user_id', 'empty' => true]);
 			$currencies = Currencies::find('list');
 			$taxTypes = TaxTypes::enum();
 
