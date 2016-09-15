@@ -36,8 +36,7 @@ $this->set([
 					<td class="flag"><?= $t('Run?') ?>
 					<td data-sort="is-active" class="flag table-sort"><?= $t('Active?') ?>
 					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
-					<td data-sort="frequency" class="table-sort"><?= $t('Frequency') ?>
-					<td data-sort="runs" class="table-sort"><?= $t('Runs') ?>
+					<td data-sort="runs" class="number table-sort"><?= $t('Runs') ?>
 					<td data-sort="ran" class="table-sort"><?= $t('Last run') ?>
 					<td data-sort="description" class="description table-sort"><?= $t('Description') ?>
 					<td><?= $t('Total (net)') ?>
@@ -58,9 +57,8 @@ $this->set([
 					<td class="flag"><i class="material-icons"><?= ($item->is_active ? 'done' : '') ?></i>
 					<td class="user">
 						<?= $this->user->link($item->user()) ?>
-					<td class="frequency"><?= $frequencies[$item->frequency] ?>
-					<td class="runs"><?= $item->runs ?>
-					<td class="ran">
+					<td class="runs number"><?= $item->runs ?>
+					<td class="ran date">
 						<?php if (!$item->ran): ?>
 							<?= $t('never') ?>
 						<?php else: ?>
