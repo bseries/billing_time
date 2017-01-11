@@ -23,13 +23,13 @@ use lithium\g11n\Message;
 extract(Message::aliases());
 
 Panes::register('billing.scheduled', [
-	'title' => $t('Scheduled'),
+	'title' => $t('Scheduled', ['scope' => 'billing_time']),
 	'url' => ['controller' => 'ScheduledInvoicePositions', 'action' => 'index', 'library' => 'billing_time', 'admin' => true],
 	'weight' => 44
 ]);
 
 Panes::register('billing.recurring', [
-	'title' => $t('Recurring'),
+	'title' => $t('Recurring', ['scope' => 'billing_time']),
 	'url' => ['controller' => 'RecurringInvoicePositions', 'action' => 'index', 'library' => 'billing_time', 'admin' => true],
 	'weight' => 45
 ]);
