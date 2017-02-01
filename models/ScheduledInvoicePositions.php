@@ -49,11 +49,11 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		],
 		'base_core\extensions\data\behavior\Searchable' => [
 			'fields' => [
+				'User.name',
+				'User.number',
 				'description',
 				'quantity',
-				'tags',
-				'User.number',
-				'User.name',
+				'tags'
 			]
 		]
 	];
