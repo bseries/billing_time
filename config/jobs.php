@@ -45,6 +45,7 @@ Jobs::recur('billing_time:invoice_place_timed', function() {
 	}
 
 	Invoices::pdo()->commit();
+	return true;
 }, [
 	'frequency' => Jobs::FREQUENCY_LOW
 ]);
