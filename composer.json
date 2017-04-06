@@ -15,6 +15,7 @@
         "atelierdisko/base_core": "1.5.*@dev",
         "atelierdisko/billing_core": "1.5.*@dev",
         "atelierdisko/billing_invoice": "1.5.*@dev",
+        "atelierdisko/li3_taggable": "1.5.*@dev",
         "unionofrad/lithium": "1.1.*@dev",
         "composer/installers": "1.*@stable"
     },
