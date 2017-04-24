@@ -92,5 +92,5 @@ $this->set([
 		<?= $t("Recurring invoice positions can be placed as pending positions, from which in turn invoices may be generated.") ?>
 	</div>
 
-	<?=$this->view()->render(['element' => 'paging'], compact('paginator'), ['library' => 'base_core']) ?>
+	<?=$this->_render('element', 'paging', compact('paginator'), ['library' => 'base_core']) ?>
 </article>
