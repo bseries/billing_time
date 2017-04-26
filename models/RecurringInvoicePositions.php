@@ -50,13 +50,13 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		],
 		'base_core\extensions\data\behavior\Searchable' => [
 			'fields' => [
+				'User.number',
+				'User.name',
 				'description',
 				'quantity',
 				'runs',
 				'frequency',
-				'tags',
-				'User.number',
-				'User.name',
+				'tags'
 			]
 		]
 	];
