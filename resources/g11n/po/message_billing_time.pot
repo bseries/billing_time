@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: billing_time 1.0\n"
 "Report-Msgid-Bugs-To: info@atelierdisko.de\n"
-"POT-Creation-Date: 2016-07-28 14:27+0200\n"
+"POT-Creation-Date: 2017-05-08 12:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,83 +81,82 @@ msgid "The date and time from which on the position will begin to be placed."
 msgstr ""
 
 #: views/recurring_invoice_positions/admin_form.html.php:57
-#: views/recurring_invoice_positions/admin_index.html.php:39
 msgid "Frequency"
 msgstr ""
 
 #: views/recurring_invoice_positions/admin_form.html.php:66
-#: views/recurring_invoice_positions/admin_index.html.php:42
+#: views/recurring_invoice_positions/admin_index.html.php:41
 #: views/scheduled_invoice_positions/admin_form.html.php:60
 #: views/scheduled_invoice_positions/admin_index.html.php:39
 msgid "Description"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:72
-#: views/scheduled_invoice_positions/admin_form.html.php:66
+#: views/recurring_invoice_positions/admin_form.html.php:73
+#: views/scheduled_invoice_positions/admin_form.html.php:67
 msgid "Tags"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:83
-#: views/scheduled_invoice_positions/admin_form.html.php:77
+#: views/recurring_invoice_positions/admin_form.html.php:84
+#: views/scheduled_invoice_positions/admin_form.html.php:78
 msgid "Quantity"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:88
-#: views/scheduled_invoice_positions/admin_form.html.php:82
+#: views/recurring_invoice_positions/admin_form.html.php:89
+#: views/scheduled_invoice_positions/admin_form.html.php:83
 msgid "Amount currency"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:94
-#: views/scheduled_invoice_positions/admin_form.html.php:88
+#: views/recurring_invoice_positions/admin_form.html.php:95
+#: views/scheduled_invoice_positions/admin_form.html.php:89
 msgid "Amount type"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:96
-#: views/scheduled_invoice_positions/admin_form.html.php:90
+#: views/recurring_invoice_positions/admin_form.html.php:97
+#: views/scheduled_invoice_positions/admin_form.html.php:91
 msgid "gross"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:96
-#: views/scheduled_invoice_positions/admin_form.html.php:90
+#: views/recurring_invoice_positions/admin_form.html.php:97
+#: views/scheduled_invoice_positions/admin_form.html.php:91
 msgid "net"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:100
-#: views/scheduled_invoice_positions/admin_form.html.php:94
-msgid "Tax rate"
-msgstr ""
-
-#: views/recurring_invoice_positions/admin_form.html.php:104
-#: views/scheduled_invoice_positions/admin_form.html.php:98
+#: views/recurring_invoice_positions/admin_form.html.php:101
+#: views/scheduled_invoice_positions/admin_form.html.php:95
 msgid "Amount"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:115
-#: views/scheduled_invoice_positions/admin_form.html.php:109
+#: views/recurring_invoice_positions/admin_form.html.php:107
+#: views/scheduled_invoice_positions/admin_form.html.php:101
+msgid "Tax rate (%)"
+msgstr ""
+
+#: views/recurring_invoice_positions/admin_form.html.php:118
+#: views/scheduled_invoice_positions/admin_form.html.php:112
 msgid "delete"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:124
-#: views/recurring_invoice_positions/admin_index.html.php:78
+#: views/recurring_invoice_positions/admin_form.html.php:127
+#: views/recurring_invoice_positions/admin_index.html.php:76
 msgid "place"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:128
-#: views/recurring_invoice_positions/admin_index.html.php:81
-#: views/scheduled_invoice_positions/admin_form.html.php:117
+#: views/recurring_invoice_positions/admin_form.html.php:131
+#: views/recurring_invoice_positions/admin_index.html.php:79
+#: views/scheduled_invoice_positions/admin_form.html.php:120
 #: views/scheduled_invoice_positions/admin_index.html.php:70
 msgid "activate"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:128
-#: views/recurring_invoice_positions/admin_index.html.php:81
-#: views/scheduled_invoice_positions/admin_form.html.php:117
+#: views/recurring_invoice_positions/admin_form.html.php:131
+#: views/recurring_invoice_positions/admin_index.html.php:79
+#: views/scheduled_invoice_positions/admin_form.html.php:120
 #: views/scheduled_invoice_positions/admin_index.html.php:70
 msgid "deactivate"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_form.html.php:134
-#: views/scheduled_invoice_positions/admin_form.html.php:123
+#: views/recurring_invoice_positions/admin_form.html.php:137
+#: views/scheduled_invoice_positions/admin_form.html.php:126
 msgid "save"
 msgstr ""
 
@@ -178,44 +177,44 @@ msgstr ""
 msgid "Active?"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:40
+#: views/recurring_invoice_positions/admin_index.html.php:39
 msgid "Runs"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:41
+#: views/recurring_invoice_positions/admin_index.html.php:40
 msgid "Last run"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:43
+#: views/recurring_invoice_positions/admin_index.html.php:42
 #: views/scheduled_invoice_positions/admin_index.html.php:40
 msgid "Total (net)"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:44
+#: views/recurring_invoice_positions/admin_index.html.php:43
 #: views/scheduled_invoice_positions/admin_index.html.php:41
 msgid "Modified"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:49
+#: views/recurring_invoice_positions/admin_index.html.php:48
 #: views/scheduled_invoice_positions/admin_index.html.php:46
 msgid "Filter"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:65
+#: views/recurring_invoice_positions/admin_index.html.php:63
 msgid "never"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:85
+#: views/recurring_invoice_positions/admin_index.html.php:83
 #: views/scheduled_invoice_positions/admin_index.html.php:74
 msgid "open"
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:90
+#: views/recurring_invoice_positions/admin_index.html.php:88
 #: views/scheduled_invoice_positions/admin_index.html.php:79
 msgid "No items available, yet."
 msgstr ""
 
-#: views/recurring_invoice_positions/admin_index.html.php:94
+#: views/recurring_invoice_positions/admin_index.html.php:92
 msgid ""
 "Recurring invoice positions can be placed as pending positions, from which "
 "in turn invoices may be generated."
