@@ -75,7 +75,7 @@ msgstr "Ausführung"
 
 #: views/recurring_invoice_positions/admin_form.html.php:48
 msgid "First run"
-msgstr "Erstmals gelaufen"
+msgstr "Erste Ausführung"
 
 #: views/recurring_invoice_positions/admin_form.html.php:51
 msgid "The date and time from which on the position will begin to be placed."
