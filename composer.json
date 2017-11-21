@@ -1,5 +1,5 @@
 {
-    "name": "atelierdisko/billing_time",
+    "name": "bseries/billing_time",
     "description": "Scheduling and Recurring functionality for Banque.",
     "homepage": "http://atelierdisko.de",
     "type": "lithium-library",
@@ -12,9 +12,9 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "atelierdisko/base_core": "1.4.*",
-        "atelierdisko/billing_core": "1.4.*",
-        "atelierdisko/billing_invoice": "1.4.*",
+        "bseries/base_core": "1.4.*",
+        "bseries/billing_core": "1.4.*",
+        "bseries/billing_invoice": "1.4.*",
         "unionofrad/lithium": "1.0.*@dev",
         "composer/installers": "1.*@stable"
     },
