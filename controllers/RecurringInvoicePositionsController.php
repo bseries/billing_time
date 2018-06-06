@@ -55,7 +55,10 @@ class RecurringInvoicePositionsController extends \base_core\controllers\BaseCon
 
 		$frequencies = RecurringInvoicePositions::enum('frequency', [
 			'monthly' => $t('monthly', ['scope' => 'billing_time']),
-			'yearly' => $t('yearly', ['scope' => 'billing_time'])
+			'yearly' => $t('yearly', ['scope' => 'billing_time']),
+			'2-yearly' => $t('biyearly', ['scope' => 'billing_time']),
+			'3-yearly' => $t('every 3 years', ['scope' => 'billing_time']),
+			'4-yearly' => $t('every 4 years', ['scope' => 'billing_time'])
 		]);
 
 		if ($item) {

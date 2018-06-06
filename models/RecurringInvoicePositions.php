@@ -19,6 +19,8 @@ namespace billing_time\models;
 
 use AD\Finance\Price;
 use DateTime;
+use DateInterval;
+use Exception;
 use billing_invoice\models\InvoicePositions;
 
 class RecurringInvoicePositions extends \base_core\models\Base {
@@ -64,7 +66,10 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 	public static $enum = [
 		'frequency' => [
 			'monthly',
-			'yearly'
+			'yearly',
+			'2-yearly',
+			'3-yearly',
+			'4-yearly'
 		]
 	];
 
@@ -81,31 +86,50 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		return $entity->amount()->multiply($entity->quantity);
 	}
 
-	public function mustPlace($entity) {
-		$now = new DateTime();
+	// Returns the next DateTime the position is scheduled to run. The method may return `false`,
+	// to indicate there isn't a scheduled time, yet.
+	public function nextRun($entity, $now = null) {
+		$now = $now ?: new DateTime();
 
+		// Consider for placement only when first_run has been reeached. Conditionally
+		// checking, as first_run is optional.
 		if ($entity->first_run) {
 			$first = DateTime::createFromFormat('Y-m-d H:i:s', $entity->first_run);
 
 			// first_run is inclusive, will run once reached date
-			if ($now->getTimestamp() < $first->getTimestamp()) {
-				return false;
+			if ($now < $first) {
+				return $first;
 			}
 		}
-		if (!$entity->ran) {
-			return true;
-		}
-		$last = DateTime::createFromFormat('Y-m-d H:i:s', $entity->ran);
-		$diff = $last->diff($now);
 
-		// FIXME Check if this should be >= 0
-		switch ($entity->frequency) {
-			case 'monthly':
-				return $diff->m >= 1;
-			case 'yearly':
-				return $diff->y >= 1;
+		// Once considered, generate an initial run immediately.
+		if (!$entity->ran) {
+			return $now;
 		}
-		return false;
+
+		// Caclulate the next date we should be placed according to given frequency.
+		$last = DateTime::createFromFormat('Y-m-d H:i:s', $entity->ran);
+
+		$interval = null;
+		if (preg_match('/([a-z]+)ly$/', $entity->frequency, $matches)) {
+			$interval = "1 {$matches[1]}";
+		} elseif (preg_match('/^([2-9]+)-([a-z]+)$/', $entity->frequency, $matches)) {
+			$interval = "{$matches[1]} {$matches[2]}s";
+		} else {
+			$message = "Failed to map frequency {$entity->frequency} to interval.";
+			throw new Exception($message);
+		}
+		return $last->add(DateInterval::createFromDateString($interval));
+	}
+
+	public function mustPlace($entity, $now = null) {
+		$now = $now ?: new DateTime();
+		$next = $entity->nextRun($now);
+
+		if ($next === false) {
+			return false;
+		}
+		return $next <= $now;
 	}
 
 	public function place($entity) {
