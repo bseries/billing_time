@@ -18,6 +18,7 @@
 namespace billing_time\models;
 
 use AD\Finance\Price;
+use DateTime;
 
 // In the moment of generating an invoice position the price is finalized.
 class ScheduledInvoicePositions extends \base_core\models\Base {
@@ -71,11 +72,13 @@ class ScheduledInvoicePositions extends \base_core\models\Base {
 		return $entity->amount()->multiply($entity->quantity);
 	}
 
-	public function mustPlace($entity) {
-		$now = DateTime();
-		$will = DateTime::createFromFormat('Y-m-d H:i:s', $entity->run_on);
+	public function nextRun($entity) {
+		return DateTime::createFromFormat('Y-m-d H:i:s', $entity->run_on);
+	}
 
-		return $will <= $now;
+	public function mustPlace($entity, $now = null) {
+		$now = $now ?: DateTime();
+		return $entity->nextRun() <= $now;
 	}
 
 	public function place($entity) {
