@@ -15,12 +15,12 @@ $this->set([
 	],
 	'meta' => [
 		'is_active' => $item->is_active ? $t('active') : $t('inactive'),
+		'must_place' => $item->mustPlace() ? $t('must place') : null
 	]
 ]);
 
 ?>
 <article>
-
 	<?=$this->form->create($item) ?>
 		<?php if ($item->exists()): ?>
 			<?= $this->form->field('id', ['type' => 'hidden']) ?>
@@ -49,6 +49,13 @@ $this->set([
 					'value' => $item->first_run ?: date('Y-m-d') . ' 14:00:00'
 				]) ?>
 				<div class="help"><?= $t('The date and time from which on the position will begin to be placed.') ?></div>
+				<?= $this->form->field('next_run', [
+					'type' => 'datetime',
+					'label' => $t('Next Run'),
+					'disabled' => true,
+					'value' => $item->nextRun()->format('Y-m-d H:i:s'),
+				]) ?>
+				<div class="help"><?= $t('The date and time on which the position will be placed next.') ?></div>
 			</div>
 			<div class="grid-column-right">
 				<?= $this->form->field('frequency', [

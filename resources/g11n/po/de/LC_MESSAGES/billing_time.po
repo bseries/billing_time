@@ -171,7 +171,7 @@ msgstr "Position wiederholen"
 
 #: views/recurring_invoice_positions/admin_index.html.php:36
 msgid "Run?"
-msgstr "Gelaufen?"
+msgstr "Laufen?"
 
 #: views/recurring_invoice_positions/admin_index.html.php:37
 #: views/scheduled_invoice_positions/admin_index.html.php:36

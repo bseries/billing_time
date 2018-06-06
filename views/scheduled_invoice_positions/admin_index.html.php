@@ -35,7 +35,7 @@ $this->set([
 				<tr>
 					<td data-sort="is-active" class="flag table-sort"><?= $t('Active?') ?>
 					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
-					<td data-sort="run-on" class="table-sort"><?= $t('Run on') ?>
+					<td data-sort="run-on" class="table-sort"><?= $t('Scheduled for…') ?>
 					<td data-sort="description" class="table-sort"><?= $t('Description') ?>
 					<td><?= $t('Total (net)') ?>
 					<td data-sort="modified" class="date modified table-sort desc"><?= $t('Modified') ?>
@@ -55,11 +55,7 @@ $this->set([
 					<td class="user">
 						<?= $this->user->link($item->user()) ?>
 					<td class="run-on">
-						<?php if ($item->run_on == date('Y-m-d')): ?>
-							<?= $t('immediately') ?>
-						<?php else: ?>
-							<?= $this->date->format($item->run_on, 'date') ?>
-						<?php endif ?>
+						<?= $this->date->format($item->nextRun(), 'date') ?>
 					<td class="description"><?= $item->description ?>
 					<td><?= $this->price->format($item->totalAmount(), 'net') ?>
 					<td class="date modified">

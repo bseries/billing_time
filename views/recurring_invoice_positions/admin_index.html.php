@@ -36,8 +36,8 @@ $this->set([
 					<td class="flag"><?= $t('Run?') ?>
 					<td data-sort="is-active" class="flag table-sort"><?= $t('Active?') ?>
 					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
-					<td data-sort="runs" class="number table-sort"><?= $t('Runs') ?>
 					<td data-sort="ran" class="table-sort"><?= $t('Last run') ?>
+					<td data-sort="run-on" class="table-sort"><?= $t('Next run') ?>
 					<td data-sort="description" class="description table-sort"><?= $t('Description') ?>
 					<td><?= $t('Total (net)') ?>
 					<td data-sort="modified" class="date modified table-sort desc"><?= $t('Modified') ?>
@@ -57,13 +57,12 @@ $this->set([
 					<td class="flag"><i class="material-icons"><?= ($item->is_active ? 'done' : '') ?></i>
 					<td class="user">
 						<?= $this->user->link($item->user()) ?>
-					<td class="runs number"><?= $item->runs ?>
 					<td class="ran date">
-						<?php if (!$item->ran): ?>
-							<?= $t('never') ?>
-						<?php else: ?>
+						<?php if ($item->ran): ?>
 							<?= $this->date->format($item->ran, 'date') ?>
 						<?php endif ?>
+					<td class="run-on">
+						<?= $this->date->format($item->nextRun(), 'date') ?>
 					<td class="description"><?= $item->description ?>
 					<td><?= $this->price->format($item->totalAmount(), 'net') ?>
 					<td class="date modified">

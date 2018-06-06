@@ -16,6 +16,7 @@ $this->set([
 	],
 	'meta' => [
 		'is_active' => $item->is_active ? $t('active') : $t('inactive'),
+		'must_place' => $item->mustPlace() ? $t('must place') : null
 	]
 ]);
 
