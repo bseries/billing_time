@@ -111,9 +111,9 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 		$last = DateTime::createFromFormat('Y-m-d H:i:s', $entity->ran);
 
 		$interval = null;
-		if (preg_match('/([a-z]+)ly$/', $entity->frequency, $matches)) {
+		if (preg_match('/^([a-z]+)ly$/', $entity->frequency, $matches)) {
 			$interval = "1 {$matches[1]}";
-		} elseif (preg_match('/^([2-9]+)-([a-z]+)$/', $entity->frequency, $matches)) {
+		} elseif (preg_match('/^([2-9]+)-([a-z]+)(ly?)$/', $entity->frequency, $matches)) {
 			$interval = "{$matches[1]} {$matches[2]}s";
 		} else {
 			$message = "Failed to map frequency {$entity->frequency} to interval.";
