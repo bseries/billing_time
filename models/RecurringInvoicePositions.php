@@ -18,6 +18,7 @@
 namespace billing_time\models;
 
 use AD\Finance\Price;
+use AD\Finance\Price\Prices;
 use DateTime;
 use DateInterval;
 use Exception;
@@ -147,6 +148,51 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 			'ran' => date('Y-m-d H:i:s'),
 			'runs' => $entity->runs + 1
 		], ['whitelist' => ['ran', 'runs']]);
+	}
+
+	/* Statistics */
+
+	public static function averageRecurringPerYear() {
+		$total = new Prices();
+
+		foreach (static::$enum['frequency'] as $frequency) {
+			$multiplier = null;
+			$divider = null;
+
+			if ($frequency === 'monthly') {
+				$multiplier = 12;
+			} elseif ($frequency === 'yearly') {
+				$multiplier = 1;
+			} elseif (preg_match('/^([2-9]+)-monthly$/', $frequency, $matches)) {
+				$multiplier = 12 / $matches[1];
+			} elseif (preg_match('/^([2-9]+)-yearly$/', $frequency, $matches)) {
+				$divider = $matches[1];
+			} else {
+				$message = "Failed to map frequency {$entity->frequency} to interval.";
+				throw new Exception($message);
+			}
+
+			$data = static::find('all', [
+				'conditions' => [
+					'frequency' => $frequency
+				],
+				'fields' => [
+					'amount_currency',
+					'amount_type',
+					'amount_rate',
+					'ROUND(SUM(amount * quantity)' . ($divider ? " / {$divider}" : "* {$multiplier}") . ') AS amount'
+				],
+				'group' => [
+					'amount_currency',
+					'amount_type',
+					'amount_rate'
+				],
+			]);
+			foreach ($data as $item) {
+				$total = $total->add($item->amount());
+			}
+		}
+		return $total;
 	}
 }
 
