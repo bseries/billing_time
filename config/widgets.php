@@ -33,7 +33,7 @@ Widgets::register('recurring', function() use ($t) {
 	$formatter = new MoniesFormatter(Environment::get('locale'));
 
 	return [
-		'title' => $t('Recurring positions', ['scope' => 'billing_time']),
+		'title' => $t('Recurring invoice positions', ['scope' => 'billing_time']),
 		'data' => [
 			$t('year average', [
 				'scope' =>'billing_time'
