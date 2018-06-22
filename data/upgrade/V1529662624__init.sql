@@ -16,7 +16,7 @@ CREATE TABLE `billing_recurring_invoice_positions` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='mirrors billing_invoice_positions';
+) ENGINE=InnoDB COMMENT='mirrors billing_invoice_positions';
 
 -- Create syntax for TABLE 'billing_scheduled_invoice_positions'
 CREATE TABLE `billing_scheduled_invoice_positions` (
@@ -34,4 +34,4 @@ CREATE TABLE `billing_scheduled_invoice_positions` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='mirrors billing_invoice_posititions';
+) ENGINE=InnoDB COMMENT='mirrors billing_invoice_posititions';
