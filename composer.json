@@ -4,9 +4,9 @@
     "type": "lithium-library",
     "license": "proprietary",
     "require": {
-        "bseries/base_core": "1.5.x-dev",
-        "bseries/billing_core": "1.5.x-dev",
-        "bseries/billing_invoice": "1.5.x-dev",
+        "bseries/base_core": "^1.5",
+        "bseries/billing_core": "^1.5",
+        "bseries/billing_invoice": "^1.5",
         "atelierdisko/li3_taggable": "^1.4@stable || 1.5.*@dev",
         "composer/installers": "1.*@stable",
         "php": "^5.5 || ^7.0",
