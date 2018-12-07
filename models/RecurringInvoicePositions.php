@@ -152,7 +152,7 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 
 	/* Statistics */
 
-	public static function averageRecurringPerYear() {
+	public static function averageRecurringPerYear($year) {
 		$total = new Prices();
 
 		foreach (static::$enum['frequency'] as $frequency) {
@@ -174,7 +174,8 @@ class RecurringInvoicePositions extends \base_core\models\Base {
 
 			$data = static::find('all', [
 				'conditions' => [
-					'frequency' => $frequency
+					'frequency' => $frequency,
+					'YEAR(created)' => ['<=' => $year]
 				],
 				'fields' => [
 					'amount_currency',
