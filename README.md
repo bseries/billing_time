@@ -1,2 +1,2 @@
-# B-Series Module
+# Billing Time B-Series Module
 ## Scheduling and Recurring functionality for Banque.

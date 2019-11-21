@@ -2,7 +2,7 @@
     "name": "bseries/billing_time",
     "description": "Scheduling and Recurring functionality for Banque.",
     "type": "lithium-library",
-    "license": "proprietary",
+    "license": ["BSD-3-Clause"],
     "require": {
         "atelierdisko/li3_taggable": "^1.4",
         "bseries/base_core": "^1.5",
